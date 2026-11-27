@@ -65,3 +65,30 @@ svg {
 img {
     height: auto;
 }
+
+.container {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.container-narrow {
+    max-width: calc(var(--content-width) + 4rem);
+}
+
+.card {
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-card);
+    background-color: var(--card-bg);
+    box-shadow: 0 1px 3px 1px var(--card-shadow);
+}
+
+.card h2 {
+    margin: 0 0 0.75rem;
+}
+
+.card h3 {
+    margin: 0 0 0.35rem;
+}

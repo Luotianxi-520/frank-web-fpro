@@ -1,0 +1,67 @@
+/* 样式表 */
+:root {
+    --theme-color: #096dd9;
+    --theme-color-light: #0a7bf4;
+    --theme-color-dark: #0862c3;
+    --text-color: #c9d1d9;
+    --text-muted: #9e9e9e;
+    --text-soft: #8b949e;
+    --canvas: #0d1117;
+    --card-bg: #161b22;
+    --input-bg: #0d1117;
+    --border: #30363d;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --navbar-bg: rgba(22, 27, 34, 0.9);
+    --navbar-height: 60px;
+    --content-width: 780px;
+    --sidebar-width: 300px;
+    --radius-card: 8px;
+    --transition: 0.3s ease;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    --font-heading: Georgia, "Times New Roman", "Microsoft YaHei",
+        "PingFang SC", serif;
+    --font-mono: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+
+/* css reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+/*点击锚点,平滑滚到目标,目标顶部自动往下挪,避开导航栏*/
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--navbar-height) + 1rem);
+    color-scheme: dark;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: var(--navbar-height);
+    background-color: var(--canvas);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    /*-webkit-font-smoothing: antialiased;*/
+}
+
+main {
+    flex: 1;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}

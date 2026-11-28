@@ -49,7 +49,6 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
-    /*-webkit-font-smoothing: antialiased;*/
 }
 
 main {
@@ -92,3 +91,207 @@ img {
 .card h3 {
     margin: 0 0 0.35rem;
 }
+
+/* 导航栏样式 */
+.site-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: var(--navbar-height);
+    padding: 0 2rem;
+    background-color: var(--navbar-bg);
+    box-shadow: 0 2px 8px var(--card-shadow);
+    backdrop-filter: saturate(150%) blur(8px);
+}
+
+.navbar-start,
+.navbar-end {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.navbar-end {
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.navbar-center {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.navbar-brand:hover {
+    color: var(--theme-color);
+}
+
+.navbar-logo {
+    width: 38px;
+    height: 38px;
+}
+
+.nav-list {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/*链接下划线动效*/
+.nav-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    left: 50%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--theme-color-light);
+    visibility: hidden;
+    transition: left 0.2s ease-in-out, right 0.2s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+    color: var(--theme-color);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+    right: 0;
+    left: 0;
+    visibility: visible;
+}
+/*汉堡按钮*/
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(9, 109, 217, 0.15);
+    color: var(--theme-color-light);
+}
+
+.menu-bar {
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-toggle.is-open .menu-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.is-open .menu-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-open .menu-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+/*导航的响应式*/
+@media (max-width: 959px) {
+    :root {
+        --navbar-height: 52px;
+    }
+
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .navbar-title {
+        display: none;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 719px) {
+    .navbar-center {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: var(--navbar-height);
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        display: block;
+        padding: 1.5rem 2rem;
+        overflow-y: auto;
+        background-color: var(--card-bg);
+    }
+/*菜单隐藏;JS 控制增删 `hidden` 来切换显示 / 隐藏*/
+    .mobile-menu[hidden] {
+        display: none;
+    }
+
+    .mobile-menu .nav-list {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .mobile-menu .nav-link {
+        padding: 0.75rem 0.25rem;
+        font-size: 1rem;
+    }
+}
+
+
+
